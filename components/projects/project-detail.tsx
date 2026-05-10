@@ -86,7 +86,7 @@ export const ProjectDetail = ({ project }: ProjectDetailProps) => {
             </ul>
           )}
         </motion.div>
- 
+
         {/* Tech Stack */}
         <motion.div className="space-y-6" variants={itemVariants}>
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
@@ -118,7 +118,7 @@ export const ProjectDetail = ({ project }: ProjectDetailProps) => {
                 rel="noopener noreferrer"
                 className="flex items-center gap-2"
               >
-                See Demo
+                Check out Live
                 <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
               </Link>
             </Button>

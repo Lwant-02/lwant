@@ -36,9 +36,6 @@ export const SAMPLE_QUESTIONS = [
     question: "What are your core tech stacks?",
   },
   {
-    question: "Tell me about your internship at LiveIn Thailand.",
-  },
-  {
     question: "How many hackathons have you won?",
   },
   {

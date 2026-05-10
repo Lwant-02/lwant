@@ -2,6 +2,30 @@ import { ProjectData } from "@/type";
 
 export const projects: ProjectData[] = [
   {
+    slug: "nivo",
+    image: "/images/projects/nivo.png",
+    title: "Nivo - The Dynamic Island for Mac",
+    description:
+      "A premium native macOS utility designed to bring dynamic ambient lighting, live widgets, and sonic feedback to the desktop. Features a highly customized glassmorphic UI.",
+    link: "/projects/nivo",
+    demoLink: "https://nivo.nawmain.dev",
+    date: "May 10, 2026",
+    tags: [
+      "Electron",
+      "React.js",
+      "Next.js",
+      "Tailwind CSS",
+      "Framer Motion",
+      "TypeScript",
+    ],
+    details: [
+      "Features: Dynamic media controls, real-time weather effects, meeting join shortcuts, and integrated notes/clipboard utilities.",
+      "Acoustic Experience: Implements high-fidelity mechanical keyboard sonic feedback with multi-pack support for tactile typing auditory response.",
+      "Design Philosophy: Utilizes the 'Liquid Glass Notch' aesthetic, leveraging refined translucent elements to match the premium native macOS look.",
+      "Technical Core: Built as an Electron app powered by Next.js, optimizing for low-latency interaction and rich desktop integrations.",
+    ],
+  },
+  {
     slug: "likdai",
     image: "/images/projects/likdai.png",
     title: "LikDai (Shan Typing Tutor)",
