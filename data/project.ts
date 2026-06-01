@@ -2,6 +2,36 @@ import { ProjectData } from "@/type";
 
 export const projects: ProjectData[] = [
   {
+    slug: "thock",
+    image: "/images/projects/thock.png",
+    title: "Thock - Minimalist Mechanical Typing Playground",
+    description:
+      "A minimalist mechanical typing playground focused on satisfying keyboard sounds, responsive keypress animations, and a premium clean typing experience.",
+    link: "/projects/thock",
+    demoLink: "https://thock.nawmain.dev",
+    date: "May 30, 2026",
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "Framer Motion",
+      "Web Audio API",
+      "Upstash Redis",
+      "Tailwind CSS",
+      "PWA",
+    ],
+    details: [
+      "Rich Mechanical Acoustics: Premium, realistic mechanical keyboard sounds powered by the Web Audio API and a customizable sound pack engine featuring 14 distinct sound packs.",
+      "2D Keyboard Visualization: Responsive on-screen physical key visualizer reacting dynamically to your real keystrokes with smooth layout adjustments.",
+      "Staggered Spring Stats & Count-Up: Fluid entrance spring animations and atomic number increments for WPM and Accuracy metrics powered by Framer Motion and react-countup.",
+      "Live Global Counter: A real-time, global aggregate counter of total thocks typed by all users worldwide, powered by Upstash Redis (via HTTP serverless REST).",
+      "Ultra-Optimized Sync Engine: Batches local keypresses using useDebounce and flushes incremental deltas only when paused, ensuring zero idle background reads.",
+      "HD Stats Card Exporter: Retina-ready image exporter using html-to-image for easy metric sharing.",
+      "Desktop-Only Blocker: Immersive mobile/tablet blocker screen utilizing responsive CSS logic and a floating 3D keycap icon to keep the playground focused on desk-bound physical keyboards.",
+      "Progressive Web App (PWA): Fully installable PWA with offline support, bringing the mechanical keyboard typing playground directly to the desktop.",
+      "Premium Minimalist Aesthetic: Stylized handwriting prompts, off-angle tilted badges, custom hand-drawn arrows, and beautiful clean typography.",
+    ],
+  },
+  {
     slug: "nivo",
     image: "/images/projects/nivo.png",
     title: "Nivo - The Dynamic Island for Mac",
