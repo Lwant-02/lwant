@@ -127,7 +127,7 @@ export const projects: ProjectData[] = [
     description:
       "A real-time, interactive global messaging web application with a focus on absolute privacy. Features an account-free experience and zero IP logging on a map-based UI.",
     link: "/projects/whisper",
-    demoLink: "https://whisperworld.vercel.app",
+    demoLink: "https://whisper.nawmain.dev",
     date: "2025",
     tags: ["Next.js", "TypeScript", "Prisma", "Supabase"],
     details: [
