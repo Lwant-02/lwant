@@ -2,6 +2,28 @@ import { ProjectData } from "@/type";
 
 export const projects: ProjectData[] = [
   {
+    slug: "khae-lik-dai",
+    image: "/images/projects/khae-lik-dai.png",
+    title: "Khae Lik Dai - Draw It, Race It, Type It in Shan",
+    description:
+      "A free party game in the browser that helps the Shan community practise reading and typing Shan, together. Friends join a room from a link and play Draw & Guess or Word Race, with a Shan keyboard built in.",
+    link: "/projects/khae-lik-dai",
+    demoLink: "https://khaelikdai.com",
+    date: "Oct 2026",
+    tags: ["Next.js", "TypeScript", "Colyseus", "Tailwind CSS", "Motion", "next-intl"],
+  },
+  {
+    slug: "kippy",
+    image: "/images/projects/kippy.png",
+    title: "Kippy - A Capture Layer for macOS",
+    description:
+      "A shortcut opens a tiny capture panel from anywhere: type, speak, or grab the screen, and carry on working. Kippy works out whether it's a note, a task, a reminder or an event, and hears and speaks on the Mac, so nothing you capture leaves it.",
+    link: "/projects/kippy",
+    demoLink: "https://heykippy.app",
+    date: "Sep 2026",
+    tags: ["Swift", "Core ML", "Whisper", "Kokoro", "Next.js"],
+  },
+  {
     slug: "thock",
     image: "/images/projects/thock.png",
     title: "Thock - Minimalist Mechanical Typing Playground",
@@ -103,24 +125,6 @@ export const projects: ProjectData[] = [
     ],
   },
   {
-    slug: "tai-expense",
-    image: "/images/projects/tai-expense.png",
-    title: "Tai Expense (Offline Tracker)",
-    description:
-      "A cross-platform personal finance mobile app for the Shan community, featuring full bilingual support and a robust offline-first architecture using SQLite.",
-    link: "/projects/tai-expense",
-    demoLink: "https://github.com/Lwant-02/Tai-Expense.git",
-    date: "2025",
-    tags: ["React Native", "Expo", "SQLite", "TypeScript"],
-    details: [
-      "Built a cross-platform mobile application tailored for the Shan community using React Native and Expo.",
-      "Implemented a robust offline-first architecture using a local SQLite database for maximum privacy.",
-      "Features full bilingual support (English and Shan) to lower the entry barrier for the community.",
-      "Includes financial management tools like income/expense tracking, budgets, and bill reminders.",
-    ],
-  },
-
-  {
     slug: "whisper",
     image: "/images/projects/whisper.png",
     title: "Whisper (Global Messaging Map)",
@@ -135,48 +139,6 @@ export const projects: ProjectData[] = [
       "Engineered a privacy-first architecture with an account-free experience and zero IP logging.",
       "Leveraged Supabase's real-time database to ensure instant, low-latency message delivery.",
       "Designed an atmospheric, map-based user interface for intuitive global connection.",
-    ],
-  },
-  {
-    slug: "ping-pal",
-    image: "/images/projects/ping-pal.png",
-    title: "Ping Pal Chat App",
-    description:
-      "A real-time chat application where I tackled socket communication, MongoDB integration, and live messaging features.",
-    link: "/projects/ping-pal",
-    demoLink: "https://ping-pal-uqm9.onrender.com",
-    date: "2024",
-    tags: [
-      "React",
-      "JavaScript",
-      "TailwindCSS",
-      "DaisyUI",
-      "Node.js",
-      "Express.js",
-      "MongoDB",
-      "Socket.io",
-    ],
-    details: [
-      "Tackled complex real-time socket communication for instant messaging.",
-      "Integrated MongoDB for message persistence and user management.",
-      "Implemented live messaging features with a smooth, responsive UI.",
-      "The backend service was hosted on render with a free tier (spin-up time about 50s).",
-    ],
-  },
-  {
-    slug: "ai-mock-job-interview",
-    image: "/images/projects/prepwise.png",
-    title: "AI Mock Job Interview",
-    description:
-      "An AI-powered mock interview platform that challenged me to integrate speech recognition, real-time responses, and AI APIs.",
-    link: "/projects/ai-mock-job-interview",
-    demoLink: "https://ai-mock-job-interview.vercel.app/",
-    date: "2024",
-    tags: ["Next.js", "Firebase", "Shadcdn", "Vapi Api", "AI-SDK"],
-    details: [
-      "Integrated advanced speech recognition for real-time user interaction.",
-      "Leveraged Vapi API and AI-SDK for intelligent mock interview responses.",
-      "Designed a professional interview experience with Firebase for storage and Shadcn for UI components.",
     ],
   },
 ];

@@ -1,175 +1,52 @@
-# 🚀 Portfolio v3 — Sai Naw Main (Lwant)
+# Portfolio v3 — Sai Naw Main (Lwant)
 
-A modern, animated personal portfolio built with **Next.js 16**, **React 19**, and **TypeScript**. Features an AI-powered chatbot, dynamic project/achievement pages, GitHub contribution calendar, and a polished dark/light theme.
+**One page, one board.** A dark canvas, like Excalidraw's, in the look of the Lwant logo — its yellow lettering, ink
+and white die-cut edges — holding six sections — **About me, Education, Projects, Achievements, Experience,
+Connect** — joined by a path of arrows. It opens on a cover with two ways in:
 
-🔗 **Live:** _coming soon_
+- **Watch the tour** — the camera glides through the sections on its own, about a minute; pause, step back or on, or
+  grab the board to take over.
+- **Explore the board** — drag or scroll to move, pinch or Ctrl + scroll to zoom; the arrow keys, `+`, `−` and `0`
+  work too.
 
----
+Dark only, on a phone and a desktop. The product and its decisions are in [docs/design.md](docs/design.md); the
+work is in [docs/delivery/backlog.md](docs/delivery/backlog.md); the rules for working here are in
+[AGENTS.md](AGENTS.md).
 
-## ✨ Features
+## Stack
 
-- **Animated Hero Section** — Flip-word animation, social links (GitHub, LinkedIn, Email), and smooth scroll CTAs
-- **Project Showcase** — Featured projects with dynamic detail pages (`/projects/[slug]`)
-- **Achievement Showcase** — Career milestones with dynamic detail pages (`/achievements/[slug]`)
-- **Experience Timeline** — Interactive work history timeline
-- **Technology Stack** — Visual display of frontend & backend technologies
-- **GitHub Contributions** — Live contribution calendar via `react-github-calendar`
-- **Contact Form** — Validated with `react-hook-form` + `zod`, with Lottie animation
-- **Ask Me (AI Chatbot)** — Powered by Google Gemini via Vercel AI SDK, with daily message rate limiting
-- **Dark / Light Theme** — System-aware toggle using `next-themes`
-- **Mobile Responsive** — Drawer navigation with sheet component for smaller screens
-- **Toast Notifications** — Via Sonner for user feedback
+Next.js 16 (App Router), React 19 with the React Compiler, TypeScript, Tailwind CSS 4,
+lucide icons. Titan One (the logo's face) and Nunito through `next/font`.
 
----
+## Getting started
 
-## 🛠 Tech Stack
-
-| Category       | Technologies                                                        |
-| -------------- | ------------------------------------------------------------------- |
-| **Framework**  | Next.js 16 (App Router), React 19, TypeScript                      |
-| **Styling**    | Tailwind CSS v4, tw-animate-css                                    |
-| **UI**         | shadcn/ui, Radix UI, Lucide Icons, Tabler Icons, React Icons       |
-| **Animation**  | Framer Motion (motion), LottieFiles                                |
-| **AI**         | Vercel AI SDK, Google Generative AI (Gemini)                       |
-| **Forms**      | React Hook Form, Zod                                               |
-| **HTTP**       | Axios                                                              |
-| **Fonts**      | JetBrains Mono, Inter (via `next/font`)                            |
-| **Other**      | react-github-calendar, react-type-animation, Sonner, next-themes   |
-
----
-
-## 📁 Project Structure
-
-```
-portfolio-v3/
-├── app/
-│   ├── layout.tsx              # Root layout (fonts, theme, navbar, toaster)
-│   ├── page.tsx                # Home page (hero, projects, timeline, etc.)
-│   ├── globals.css             # Global styles & CSS variables
-│   ├── about/                  # About page
-│   ├── projects/
-│   │   ├── page.tsx            # Projects listing
-│   │   └── [slug]/             # Dynamic project detail pages
-│   ├── achievements/
-│   │   ├── page.tsx            # Achievements listing
-│   │   └── [slug]/             # Dynamic achievement detail pages
-│   ├── ask-me/
-│   │   └── page.tsx            # AI chatbot page
-│   └── api/
-│       └── chat/
-│           └── route.ts        # AI chat API route (Gemini)
-├── components/
-│   ├── navbar.tsx              # Desktop navigation bar
-│   ├── mobile-drawer.tsx       # Mobile sheet drawer navigation
-│   ├── footer.tsx              # Footer
-│   ├── showcase-card.tsx       # Reusable project/achievement card
-│   ├── timeline.tsx            # Experience timeline component
-│   ├── theme-toggle.tsx        # Dark/light theme switcher
-│   ├── theme-provider.tsx      # next-themes provider
-│   ├── client-provider.tsx     # Client-side provider wrapper
-│   ├── home/                   # Home page sections
-│   │   ├── home-hero.tsx       # Hero with flip-word animation
-│   │   ├── selected-project.tsx
-│   │   ├── selected-achievement.tsx
-│   │   ├── experience-timeline.tsx
-│   │   ├── technologies.tsx    # Frontend & backend stack display
-│   │   ├── contribution.tsx    # GitHub contribution calendar
-│   │   ├── contact.tsx         # Contact form with validation
-│   │   └── flip-words.tsx      # Animated flip-word component
-│   ├── ui/                     # shadcn/ui & custom UI primitives
-│   ├── about/                  # About page components
-│   ├── projects/               # Project page components
-│   ├── achievements/           # Achievement page components
-│   ├── ask-me/                 # Chat interface components
-│   └── not-found/              # 404 page components
-├── constant/
-│   └── index.ts                # App data (projects, achievements, experiences, prompts)
-├── hooks/
-│   └── use-auto-scroll.ts      # Auto-scroll hook for chat
-├── lib/
-│   ├── utils.ts                # Utilities (cn, scroll, daily rate limiter)
-│   └── axios.ts                # Axios instance
-├── assets/images/              # Static image assets
-├── type.d.ts                   # Global TypeScript type definitions
-└── image.d.ts                  # Image module declarations
-```
-
----
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- **Node.js** ≥ 18
-- **npm** (or yarn / pnpm / bun)
-
-### Installation
+Node 24, npm.
 
 ```bash
-# Clone the repository
-git clone https://github.com/Lwant-02/portfolio-v3.git
-cd portfolio-v3
-
-# Install dependencies
 npm install
+npm run dev                    # http://localhost:3000
+npm test                       # lib/'s tests, node --test — no network
+npm run lint
+npm run build && npm start     # the production build
 ```
 
-### Environment Variables
+One environment variable, `BASE_URL` — the site's address, for the metadata and the sitemap (`env.txt`).
 
-Create a `.env` file in the root directory:
+## Where things are
 
-```env
-GOOGLE_GENERATIVE_AI_API_KEY=your_google_ai_api_key
-```
+| Path | What |
+| --- | --- |
+| `app/page.tsx` | the one page: the board around the six sections |
+| `components/board/` | the board — the camera, the hand, the tour, the cover, the logo and the tour's controls, the path |
+| `components/sections/` | the six sections, rendered on the server; Projects and Achievements fold their long lists under *See more* |
+| `data/` | every word about the owner — edit here to change the board |
+| `lib/` | the camera, the tour, the strokes — plain TypeScript, tested |
+| `docs/` | the design, and the backlog of PBIs |
 
-> The AI chatbot ("Ask Me" page) requires a Google Generative AI API key for the Gemini model.
+The old addresses — `/about`, `/projects/…`, `/achievements/…`, `/ask-me` — redirect to `/`.
 
-### Development
+## License
 
-```bash
-npm run dev
-```
+Personal, and not licensed for redistribution.
 
-Open [http://localhost:3000](http://localhost:3000) to view the app.
-
-### Build
-
-```bash
-npm run build
-npm start
-```
-
----
-
-## 📜 Available Scripts
-
-| Script          | Description                    |
-| --------------- | ------------------------------ |
-| `npm run dev`   | Start development server       |
-| `npm run build` | Build for production            |
-| `npm start`     | Start production server         |
-| `npm run lint`  | Run ESLint                      |
-
----
-
-## 🌐 Pages
-
-| Route                  | Description                              |
-| ---------------------- | ---------------------------------------- |
-| `/`                    | Home — Hero, projects, timeline, tech, contributions, contact |
-| `/about`               | About page                               |
-| `/projects`            | All projects                             |
-| `/projects/[slug]`     | Individual project detail                |
-| `/achievements`        | All achievements                         |
-| `/achievements/[slug]` | Individual achievement detail            |
-| `/ask-me`              | AI chatbot (Gemini-powered)              |
-
----
-
-## 📄 License
-
-This project is personal and not currently licensed for redistribution.
-
----
-
-**Built with ❤️ by [Sai Naw Main (Lwant)](https://github.com/Lwant-02)**
+**Built by [Sai Naw Main (Lwant)](https://github.com/Lwant-02).**

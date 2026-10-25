@@ -3,6 +3,14 @@ export const experiences = [
     year: "2026",
     roles: [
       {
+        title: "Software Engineer",
+        organization: "Scalation.ai",
+        dateRange: "Jun 2026 - Present",
+        description:
+          "Building Scalation, AI-powered revenue management and dynamic pricing for independent hotels: what the hotels nearby charge, the busy dates ahead and a suggested price for every night, in one app.",
+        link: "https://scalation.ai",
+      },
+      {
         title: "Line Chat Bot Developer Intern",
         organization: "LiveIn Thailand",
         dateRange: "Dec 2025 - Apr 2026",

@@ -62,7 +62,7 @@ export const certifications: TimelineData[] = [
         dateRange: "Nov 2024",
         description:
           "Advanced React patterns, REST APIs with Express, and MongoDB data modeling.",
-        link: "/pdf/mern-fullstack.pdf",
+        link: "/pdf/mern-fullstack-guide.pdf",
       },
       {
         title: "AI: From Bright Future to Dark Possibilities",

@@ -1,19 +1,17 @@
-import type { Metadata } from "next";
-import { JetBrains_Mono, Inter } from "next/font/google";
-import { Toaster } from "sonner";
+import type { Metadata, Viewport } from "next";
+import { Nunito, Titan_One } from "next/font/google";
 
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
-import { Navbar } from "@/components/navbar";
-import { ClientProvider } from "@/components/client-provider";
 
-const jetBrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
+// The logo's face for what's drawn on the board (PBI-004), Nunito for reading.
+const display = Titan_One({
+  variable: "--font-display-face",
+  weight: "400",
   subsets: ["latin"],
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const body = Nunito({
+  variable: "--font-body-face",
   subsets: ["latin"],
 });
 
@@ -65,28 +63,38 @@ export const metadata: Metadata = {
     title: "Sai Naw Main (Lwant) | Full-Stack Developer Portfolio",
     description:
       "Full-Stack developer passionate about creating beautiful, functional web applications. Explore my projects, achievements, and development journey.",
+    // the Lwant wordmark on paper (PBI-003); the tab's icons are app/icon.svg, favicon.ico and apple-icon.png
     images: [
       {
-        url: `${BASE_URL}/hamster.png`,
-        width: 96,
-        height: 96,
-        alt: "Sai Naw Main (Lwant) – Portfolio Logo",
+        url: `${BASE_URL}/lwant-share.png`,
+        width: 1200,
+        height: 630,
+        alt: "Lwant",
+      },
+      {
+        url: `${BASE_URL}/lwant-share-square.png`,
+        width: 512,
+        height: 512,
+        alt: "Lwant",
       },
     ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Sai Naw Main (Lwant) | Full-Stack Developer Portfolio",
     description:
       "Full-Stack developer passionate about creating beautiful, functional web applications. Explore my projects, achievements, and development journey.",
-    images: [`${BASE_URL}/hamster.png`],
+    images: [`${BASE_URL}/lwant-share.png`],
   },
   alternates: {
     canonical: BASE_URL,
   },
-  icons: {
-    icon: "/hamster.png",
-  },
+};
+
+// dark only (PBI-004): the browser's own chrome in the board's night
+export const viewport: Viewport = {
+  themeColor: "#17171a",
+  colorScheme: "dark",
 };
 
 // JSON-LD structured data for Person (developer portfolio)
@@ -98,7 +106,6 @@ const jsonLd = {
   description:
     "Full-stack developer passionate about creating beautiful, functional web applications. Experienced in Next.js, React, TypeScript, and AI integration.",
   url: BASE_URL,
-  email: "jaimain671@gmail.com",
   jobTitle: "Full-Stack Developer",
   sameAs: [
     "https://github.com/Lwant-02",
@@ -110,7 +117,6 @@ const jsonLd = {
     "TypeScript",
     "Tailwind CSS",
     "Node.js",
-    "AI SDK",
     "UI/UX Design",
     "Web Development",
   ],
@@ -122,34 +128,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning={true}>
-      <body
-        className={`${jetBrainsMono.variable} ${inter.variable} antialiased`}
-      >
+    <html lang="en">
+      <body className={`${display.variable} ${body.variable}`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <ClientProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <Navbar />
-            <main className="layout min-h-screen">{children}</main>
-          </ThemeProvider>
-          <Toaster
-            position="top-right"
-            toastOptions={{
-              duration: 5000,
-              style: {
-                fontSize: "15px",
-              },
-            }}
-          />
-        </ClientProvider>
+        {children}
       </body>
     </html>
   );

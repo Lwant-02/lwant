@@ -1,14 +1,5 @@
 import type { StaticImageData } from "next/image";
 
-interface ShowcaseCardProps {
-  image: string | StaticImageData;
-  title: string;
-  description: string;
-  link?: string;
-  extraLink?: string;
-  date: string;
-}
-
 interface TimelineData {
   year: string;
   roles: {
@@ -18,26 +9,6 @@ interface TimelineData {
     description: string;
     link?: string;
   }[];
-}
-
-interface TimelineProps {
-  data: TimelineData[];
-}
-
-interface Technology {
-  name: string;
-  icon: React.ReactNode;
-  color: string;
-}
-
-interface MessageType {
-  role: "user" | "assistant";
-  content: string;
-}
-
-interface DailyLimit {
-  date: string;
-  count: number;
 }
 
 interface ProjectData {
