@@ -1,4 +1,4 @@
-# Portfolio v3 — Sai Naw Main (Lwant)
+# Lwant — Sai Naw Main's portfolio
 
 The owner's personal portfolio, **one page, one board** (PBI-002), in the look of the Lwant logo (PBI-004): a dark
 canvas holding About me, Education, Projects, Achievements (with the certifications), Experience and Connect, joined by
@@ -24,7 +24,7 @@ A single Next 16 app (App Router, React 19, the React Compiler, Tailwind 4), on 
 | `components/board/` | the client leaves: `board.tsx` (the camera, the hand — drag, wheel, pinch, keys — the tour), `cover.tsx`, `controls.tsx` (the logo, and the tour's controls — no section bar, no zoom controls, PBI-006), `path.tsx` (the arrows between the sections, from their measured boxes) |
 | `components/sections/` | the six sections, server components: `parts.tsx` (`Frame`, `Marker`, `Card`, `OutLink`, `Chip`), `more.tsx` (*See more*, the one client leaf among them, PBI-007), `about.tsx`, `timeline.tsx` (Education, Experience), `projects.tsx`, `achievements.tsx`, `connect.tsx` |
 | `data/` | the content — `about.ts` (the profile and the social accounts), `education.ts`, `project.ts`, `achievement.ts`, `certification.ts`, `experience.ts` |
-| `lib/` | `camera.ts` (zoom about a point, fit, the glide's ease), `tour.ts` (the sections' order and holds, a long section's drift), `arrows.ts` (the path's arrows and where they run), `more.ts` (a long list cut short), `links.ts`, `utils.ts` (`cn`) |
+| `lib/` | `camera.ts` (zoom about a point, fit, the glide's ease), `tour.ts` (the sections' order and holds, a long section's drift), `arrows.ts` (the path's arrows and where they run), `more.ts` (a long list cut short), `site.ts` (the site's address), `profile.ts` (the page's JSON-LD, from `data/`), `links.ts`, `utils.ts` (`cn`) |
 | `tests/` | `node --test` on `lib/` |
 | `app/icon.svg`, `favicon.ico`, `apple-icon.png` | the tab's and the home screen's icons, by Next's file conventions (PBI-003) |
 | `public/` | the images, the certificates as PDFs, the wordmark (`lwant-logo.svg`, `lwant-logo-dark.svg`) and the share images (`lwant-share.png`, `lwant-share-square.png`) |
@@ -56,7 +56,7 @@ A single Next 16 app (App Router, React 19, the React Compiler, Tailwind 4), on 
 
 - **PBIs.** File with the `create-pbi` skill, build with `implement-pbi`. A PBI must be `Agreed` before code is
   written for it — the rebuild's first scaffold too. Skills live in `.claude/skills/`: `create-pbi`, `implement-pbi`,
-  `review-checklist`, `debug`. A deploy skill arrives with the hosting decision (open question 3).
+  `review-checklist`, `debug`. Hosting is Vercel, the `nawmain` project (open question 3, settled 2026-10-25); production deploys are the owner's to approve.
 - **Design skills**, pinned in `skills-lock.json` as Khae Lik Dai's are: `frontend-design` and `svg-logo-designer`
   shape a surface; `web-design-guidelines` (Vercel's Web Interface Guidelines, fetched fresh each time) reviews one.
   **The rebuild's decided look wins over all three**; they fill what it leaves open.

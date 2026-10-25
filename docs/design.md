@@ -106,5 +106,8 @@ What the rebuild holds that no PBI has started — **no numbers**: each takes th
 1. 🔴 **Who it's for and its voice** — what the board should make a visitor do. The look is settled (PBI-002).
 2. 🟡 **The stack** — the single Next app on npm, as it is; PBI-002 built in it. Khae Lik Dai's and journey's
    Turborepo on pnpm only if the owner wants it — nothing on one page needs it.
-3. 🔴 **Hosting and the domain** — the metadata names `https://nawmain.dev`; nothing in the repo says where it's hosted.
+3. 🟢 **Hosting and the domain** — settled by the owner, 2026-10-25: *"start deploy by using the vercel mcp"*. Vercel,
+   the `nawmain` project in *Sai Naw Main's projects*, serving `https://nawmain.dev`, connected to `Lwant-02/lwant` (the
+   repo renamed from `portfolio-v3` the same day). A push builds a preview; production is a deploy or a promotion the
+   owner approves. `BASE_URL` is its one variable.
 4. 🟢 **Which features stay** — settled by the owner, 2026-10-25 (PBI-002, above).

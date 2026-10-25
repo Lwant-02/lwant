@@ -13,6 +13,8 @@ export const about = {
   beyond:
     "Started coding in 2023 out of pure curiosity and a passion for problem-solving. Transitioned from developing mobile apps to building full-stack web solutions and AI chatbots. Now I'm constantly exploring new tech stacks and participating in hackathons, always looking for the next challenge that pushes my boundaries and helps me grow as an engineer.",
   interests: ["Gaming", "Coding", "Music", "New Tech", "Building", "Sports"],
+  // what the page's structured data says the owner knows, as the old site's JSON-LD had it (PBI-009)
+  knowsAbout: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Node.js", "UI/UX Design", "Web Development"],
 };
 
 export const socials = [

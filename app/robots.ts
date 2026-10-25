@@ -1,7 +1,8 @@
 import type { MetadataRoute } from "next";
+import { siteUrl } from "@/lib/site";
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = process.env.BASE_URL || "https://nawmain.dev";
+  const baseUrl = siteUrl();
 
   return {
     rules: [

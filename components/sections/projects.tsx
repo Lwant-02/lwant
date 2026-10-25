@@ -35,7 +35,7 @@ function Project({ project: p, index }: { project: (typeof projects)[number]; in
     <Card as="li" index={index} className="flex flex-col gap-3 p-3.5 pb-5">
       <Image
         src={p.image}
-        alt=""
+        alt={`Screenshot of ${p.title}`}
         width={1280}
         height={720}
         sizes="(min-width: 1024px) 960px, 720px"

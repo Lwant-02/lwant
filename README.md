@@ -1,4 +1,6 @@
-# Portfolio v3 — Sai Naw Main (Lwant)
+# Lwant — Sai Naw Main's portfolio
+
+Live at **[nawmain.dev](https://nawmain.dev)**.
 
 **One page, one board.** A dark canvas, like Excalidraw's, in the look of the Lwant logo — its yellow lettering, ink
 and white die-cut edges — holding six sections — **About me, Education, Projects, Achievements, Experience,
@@ -30,7 +32,8 @@ npm run lint
 npm run build && npm start     # the production build
 ```
 
-One environment variable, `BASE_URL` — the site's address, for the metadata and the sitemap (`env.txt`).
+One environment variable, `BASE_URL` — the site's address, for the metadata, robots and the sitemap (`env.txt`);
+without it, `https://nawmain.dev`.
 
 ## Where things are
 
@@ -38,12 +41,24 @@ One environment variable, `BASE_URL` — the site's address, for the metadata an
 | --- | --- |
 | `app/page.tsx` | the one page: the board around the six sections |
 | `components/board/` | the board — the camera, the hand, the tour, the cover, the logo and the tour's controls, the path |
-| `components/sections/` | the six sections, rendered on the server; Projects and Achievements fold their long lists under *See more* |
-| `data/` | every word about the owner — edit here to change the board |
-| `lib/` | the camera, the tour, the strokes — plain TypeScript, tested |
+| `components/sections/` | the six sections, rendered on the server; Projects, Achievements and Experience fold their long lists under *See more* |
+| `data/` | every word about the owner — edit here to change the board, and the page's structured data with it |
+| `lib/` | the camera, the tour, the path's arrows, *See more*, the site's address and its JSON-LD — plain TypeScript, tested |
 | `docs/` | the design, and the backlog of PBIs |
 
 The old addresses — `/about`, `/projects/…`, `/achievements/…`, `/ask-me` — redirect to `/`.
+
+## Search
+
+The page is server-rendered, so every word — the folded cards too — is in the HTML. It carries a canonical address,
+Open Graph and Twitter cards with the share images, `robots.txt`, a sitemap, and JSON-LD: a `ProfilePage` of the owner
+built from `data/` (`lib/profile.ts`) — the current role and employer, the schools, the photo, the social accounts.
+
+## Hosting
+
+Vercel, the `nawmain` project, serving [nawmain.dev](https://nawmain.dev) from this repository
+([Lwant-02/lwant](https://github.com/Lwant-02/lwant)). A push builds a preview; production is deployed or promoted
+from the Vercel dashboard. Its one variable is `BASE_URL`.
 
 ## License
 

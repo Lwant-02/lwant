@@ -1,6 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { Nunito, Titan_One } from "next/font/google";
 
+import { about, socials } from "@/data/about";
+import { education } from "@/data/education";
+import { experiences } from "@/data/experience";
+import { profilePage } from "@/lib/profile";
+import { siteUrl } from "@/lib/site";
 import "./globals.css";
 
 // The logo's face for what's drawn on the board (PBI-004), Nunito for reading.
@@ -15,7 +20,7 @@ const body = Nunito({
   subsets: ["latin"],
 });
 
-const BASE_URL = process.env.BASE_URL || "https://nawmain.dev";
+const BASE_URL = siteUrl();
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
@@ -97,30 +102,19 @@ export const viewport: Viewport = {
   colorScheme: "dark",
 };
 
-// JSON-LD structured data for Person (developer portfolio)
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  name: "Sai Naw Main",
-  alternateName: "Lwant",
+// the page's JSON-LD, a ProfilePage of the owner built from data/ (PBI-009)
+const jsonLd = profilePage({
+  url: BASE_URL,
+  name: about.name,
+  nickname: about.nickname,
+  photo: about.photo,
   description:
     "Full-stack developer passionate about creating beautiful, functional web applications. Experienced in Next.js, React, TypeScript, and AI integration.",
-  url: BASE_URL,
-  jobTitle: "Full-Stack Developer",
-  sameAs: [
-    "https://github.com/Lwant-02",
-    "https://www.linkedin.com/in/sai-naw-main-03b655281/",
-  ],
-  knowsAbout: [
-    "Next.js",
-    "React",
-    "TypeScript",
-    "Tailwind CSS",
-    "Node.js",
-    "UI/UX Design",
-    "Web Development",
-  ],
-};
+  knowsAbout: about.knowsAbout,
+  socials: socials.map((s) => s.href),
+  experience: experiences.flatMap((y) => y.roles),
+  education: education.flatMap((y) => y.roles),
+});
 
 export default function RootLayout({
   children,

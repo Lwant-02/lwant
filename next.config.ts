@@ -5,6 +5,7 @@ const OLD_PAGES = ["/about", "/projects", "/projects/:slug", "/achievements", "/
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  poweredByHeader: false,
   reactCompiler: true,
   experimental: {
     globalNotFound: true,
