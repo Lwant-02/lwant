@@ -58,7 +58,8 @@ export function Controls(p: Props) {
         className="pointer-events-auto absolute top-3 left-3 h-10 w-auto lg:top-4 lg:left-5 lg:h-12.5"
       />
 
-      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 lg:bottom-4">
+      {/* as wide as what it holds: at left 50% it would otherwise get half the screen and wrap *Watch the tour* */}
+      <div className="absolute bottom-3 left-1/2 w-max -translate-x-1/2 lg:bottom-4">
         {watching ? (
           <div className={`${ISLAND} flex w-[min(430px,calc(100vw-32px))] items-center gap-1.5 p-1.5 pr-4`}>
             <button type="button" onClick={p.onBack} disabled={p.step === 0} aria-label="The section before" className={TOOL}>

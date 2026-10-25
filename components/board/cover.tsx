@@ -81,7 +81,7 @@ export function KeyButton({
       type="button"
       onClick={onClick}
       className={cn(
-        "keycap inline-flex h-14 cursor-pointer items-center gap-3 rounded-2xl px-6 font-display text-[19px] transition-transform hover:-translate-y-0.5 active:translate-y-0.5 sm:h-[60px] sm:px-7 sm:text-[22px]",
+        "keycap inline-flex h-14 cursor-pointer items-center gap-3 whitespace-nowrap rounded-2xl px-6 font-display text-[19px] transition-transform hover:-translate-y-0.5 active:translate-y-0.5 sm:h-[60px] sm:px-7 sm:text-[22px]",
         primary ? "bg-sun text-ink" : "bg-[#26262b] text-white",
         className,
       )}
