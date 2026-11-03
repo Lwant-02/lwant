@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Nunito, Titan_One } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 
 import { about, socials } from "@/data/about";
 import { education } from "@/data/education";
@@ -129,6 +130,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         {children}
+        <Analytics />
       </body>
     </html>
   );
