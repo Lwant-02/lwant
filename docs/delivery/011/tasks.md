@@ -13,4 +13,4 @@ Status legend: `Todo` · `InProgress` · `Done` · `Owner: human` (an agent cann
 | 7 | `env.txt`, `docs/design.md`, `AGENTS.md`, the sitemap. | Done |
 | 8 | Verify: tests, lint, build, `curl`, the secret not in the bundle, a note posted and refused, headless Chrome. | Done |
 | 9 | `DATABASE_URL` on Vercel for `nawmain` (owner, 2026-11-07: *"u can add the db url to vercel as well"*). | Done |
-| 10 | The look against the canvas; the RSU photos and logo cleared or swapped. | Owner: human |
+| 10 | The look against the canvas; the RSU photos and logo cleared or swapped (owner, 2026-11-07: *"yes everything stay and u can push and deploy"*). | Done |

@@ -2,7 +2,7 @@
 
 | | |
 | --- | --- |
-| **Status** | InProgress — built and verified here; CoS 10 is the owner's |
+| **Status** | Done (2026-11-07) |
 | **Agreed** | 2026-11-07, owner: *"good now time to implement"*, after the design canvas below |
 | **Created** | 2026-11-07 |
 | **Source** | Owner, 2026-11-07: *"I want to add the graduation tour for me and countdown cuz my graudation will be next month 5 and 6"*; *"I also want like user can comment and will appear on the board"*; *"add the cta to back to my portfolio page as well and put cta back to graduation page"*; *"add the animation or other sticker … for the infor and img pls go and get from the internet"*; *"add this somewhere cuz this is iconic"* (RSU2015-04) *"and b14 img … and add my photo as well"* |
@@ -87,7 +87,7 @@ the cover, the tour's three stops, a note posted from the form.
 
 ## Verification (2026-11-07)
 
-Built and checked here; **CoS 10 waits on the owner**, so the PBI stays `InProgress`.
+Built and checked here, then deployed to production on the owner's word.
 
 - **1** `npm run build && npm start`, `curl /graduation`: 200; *Rehearsal & group photo*, *Commencement ceremony*,
   *Building 14*, the degree's title, *Back to my portfolio* to `/`, and, with notes in the table, each one's name and
@@ -110,5 +110,5 @@ Built and checked here; **CoS 10 waits on the owner**, so the PBI stays `InProgr
 - **8** `npm test` (24), `tsc --noEmit`, `npm run lint`, `npm run build` pass. The portfolio: its tour starts on *About
   me*, *1 of 6*; no console errors on either page at 1440 × 900 or 390 × 844; no sideways scroll on a phone.
 - **9** Set 2026-11-07 at the owner's word (*"u can add the db url to vercel as well"*): `DATABASE_URL` on `nawmain`, type *sensitive*, production and preview. Development reads `.env.local`.
-- **10** **Owner: human**.
+- **10** The owner, 2026-11-07: *"yes everything stay and u can push and deploy"* — the photos and RSU's logo stay.
 
