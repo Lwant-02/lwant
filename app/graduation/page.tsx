@@ -14,7 +14,8 @@ import { siteUrl } from "@/lib/site";
 import { GRADUATION } from "@/lib/tour";
 
 // rendered in Singapore, beside the Neon database (ap-southeast-1) and near the owner's visitors; from Vercel's default,
-// Washington, each visit crossed the Pacific twice
+// Washington, each visit crossed the Pacific twice. vercel.json sets it for the project, which Vercel honours where
+// this alone wasn't.
 export const preferredRegion = "sin1";
 
 const URL = `${siteUrl()}/graduation`;

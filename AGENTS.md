@@ -31,6 +31,7 @@ to `/` (`next.config.ts`).
 | `lib/` | `camera.ts` (zoom about a point, fit, the glide's ease), `tour.ts` (both boards' stops and holds, a long section's drift), `graduation.ts` (the phase, the countdown, a note's checks, the rate limit), `arrows.ts` (the path's arrows and where they run), `more.ts` (a long list cut short), `site.ts` (the site's address), `profile.ts` (the page's JSON-LD, from `data/`), `links.ts`, `utils.ts` (`cn`) |
 | `tests/` | `node --test` on `lib/` |
 | `app/icon.svg`, `favicon.ico`, `apple-icon.png` | the tab's and the home screen's icons, by Next's file conventions (PBI-003) |
+| `vercel.json` | the functions' region, `sin1`: beside Neon and the owner's visitors (PBI-011) |
 | `scripts/` | `pbi.mjs`; `notes.sql` and `notes-setup.mjs` (`npm run notes:setup`, the Wishes table) |
 | `public/` | the images (`images/graduation/`: Building 14, the sunrise), the certificates as PDFs, the wordmark (`lwant-logo.svg`, `lwant-logo-dark.svg`) and the share images (`lwant-share.png`, `lwant-share-square.png`) |
 

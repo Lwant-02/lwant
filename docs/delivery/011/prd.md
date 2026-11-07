@@ -121,5 +121,6 @@ Built and checked here, then deployed to production on the owner's word.
   time start and end"*; *"why the link to graduation is kinda stale"*): Day 2 reads *07:00–19:30*, RSU's first round's
   start to its last's end. The link was `next/link` already; the wait was the route running in Washington (`iad1`)
   while its visitors and Neon are in Singapore — `x-vercel-id: sin1::iad1`, about 0.7 s to the first byte. It now runs
-  in `sin1` (`preferredRegion`), and `app/graduation/loading.tsx` answers a click at once and lets Next prefetch it.
+  in `sin1` — `vercel.json`'s `regions`, since the route's `preferredRegion` alone left it in `iad1` — and
+  `app/graduation/loading.tsx` answers a click at once and lets Next prefetch it.
 
