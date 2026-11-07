@@ -30,7 +30,7 @@ which take their stops and their cover from the page instead of from `lib/tour.t
 - **Three sections**, in the tour's order: **Graduation** (the countdown to the ceremony, the bar from June 2023, the
   degree), **The days** (Day 1 and Day 2 from RSU's page, Building 14, the sunrise over the pavilion), **Wishes** (the
   form and the newest notes; older notes spill onto the board below). Dark *gown* panels, the board's stickers.
-- **Its cover**: RSU's logo, *Class of 2026 · Bachelor of ICT*, *I'm graduating!*, the countdown, *Watch the tour* and
+- **Its cover**: *Class of 2026 · Bachelor of ICT*, *I'm graduating!*, the countdown, *Watch the tour* and
   *Leave a note* (the same width), the owner's photo and Building 14 as taped photos, the *Class of 2026* badge and the
   *5–6 Dec* burst, falling confetti; *Back to my portfolio* top right, there and over the board.
 - **Its tour**: Graduation, The days, Wishes; confetti when it ends.
@@ -115,3 +115,5 @@ Built and checked here, then deployed to production on the owner's word.
   ticket lived on the cover alone, gone once the tour or exploring began. The portfolio's board now keeps *See my
   graduation* in its top right corner, as `/graduation` keeps *Back to my portfolio*; checked in headless Chrome at 1440
   and 390, after *Watch the tour* and after *Explore the board*.
+- **RSU's logo out** (owner, 2026-11-07: *"no need to put this logo"*): gone from the cover, and its file from
+  `public/images/graduation/`.

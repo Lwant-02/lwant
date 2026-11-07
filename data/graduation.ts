@@ -46,7 +46,6 @@ export const graduation = {
       detail: "Building 14 · the round by faculty, set by RSU",
     },
   ],
-  logo: { src: "/images/graduation/rsu-logo.png", alt: "Rangsit University", width: 820, height: 180 },
   photos: {
     // the owner's photo, from data/about.ts
     me: { caption: "Lwant · Class of 2026" },

@@ -29,7 +29,7 @@ const BITS = [
 type Props = { now: number; name: string; photo: string; degree: string };
 
 /**
- * What /graduation opens on (PBI-011, the canvas's B): RSU's logo, *I'm graduating!*, the countdown to the ceremony,
+ * What /graduation opens on (PBI-011, the canvas's B): *I'm graduating!*, the countdown to the ceremony,
  * and two ways in — watch the tour, or go and leave a note. Around it, stuck on the night: the owner's photo, Building
  * 14, the *Class of 2026* badge and the *5–6 Dec* burst, and confetti falling.
  */
@@ -96,8 +96,7 @@ export function GraduationCover({ now: server, name, photo, degree }: Props) {
 
       <div className="relative grid min-h-full place-items-center px-4 pt-20 pb-12 sm:px-5">
         <div className="flex w-full max-w-[620px] animate-[rise_600ms_cubic-bezier(0.16,1,0.3,1)_both] flex-col items-center text-center motion-reduce:animate-none">
-          <Image src={graduation.logo.src} alt={graduation.logo.alt} width={graduation.logo.width} height={graduation.logo.height} className="h-auto w-[150px] opacity-90 sm:w-[168px]" />
-          <p className="sticker mt-4 flex -rotate-2 items-center gap-2.5 rounded-full bg-white py-1.5 pr-4 pl-1.5 font-display text-[14px] whitespace-nowrap text-ink sm:text-[15px]">
+          <p className="sticker flex -rotate-2 items-center gap-2.5 rounded-full bg-white py-1.5 pr-4 pl-1.5 font-display text-[14px] whitespace-nowrap text-ink sm:text-[15px]">
             <span className="grid size-7.5 place-items-center rounded-full border-[2.5px] border-ink bg-education-tint">
               <Mortarboard className="size-5.5" />
             </span>
