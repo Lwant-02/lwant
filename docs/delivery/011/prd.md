@@ -111,4 +111,7 @@ Built and checked here, then deployed to production on the owner's word.
   me*, *1 of 6*; no console errors on either page at 1440 × 900 or 390 × 844; no sideways scroll on a phone.
 - **9** Set 2026-11-07 at the owner's word (*"u can add the db url to vercel as well"*): `DATABASE_URL` on `nawmain`, type *sensitive*, production and preview. Development reads `.env.local`.
 - **10** The owner, 2026-11-07: *"yes everything stay and u can push and deploy"* — the photos and RSU's logo stay.
-
+- **After the deploy** (owner, 2026-11-07: *"but at my portfolio page does not have the cta to graduation"*): the
+  ticket lived on the cover alone, gone once the tour or exploring began. The portfolio's board now keeps *See my
+  graduation* in its top right corner, as `/graduation` keeps *Back to my portfolio*; checked in headless Chrome at 1440
+  and 390, after *Watch the tour* and after *Explore the board*.

@@ -1,4 +1,4 @@
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { graduation } from "@/data/graduation";
 import type { Days } from "@/lib/graduation";
@@ -46,6 +46,33 @@ export function BackLink({ className }: { className?: string }) {
         <span className="sm:hidden">My portfolio</span>
         <span className="hidden sm:inline">Back to my portfolio</span>
         <span className="hidden font-body text-[12px] font-black text-ink-3 sm:inline">Projects, experience &amp; more</span>
+      </span>
+    </Link>
+  );
+}
+
+/** The way to /graduation from over the portfolio's board, where the cover's ticket is gone: BackLink's twin. */
+export function GraduationLink({ className }: { className?: string }) {
+  return (
+    <Link
+      href="/graduation"
+      className={cn(
+        "sticker group inline-flex -rotate-[1.5deg] items-center gap-2.5 rounded-full bg-white py-1.5 pr-1.5 pl-1.5 font-display text-[15px] text-ink transition-transform hover:rotate-0 hover:-translate-y-0.5 sm:pl-2 sm:text-[16px]",
+        className,
+      )}
+    >
+      <span className="grid size-8 flex-none place-items-center rounded-full border-[2.5px] border-ink bg-education-tint sm:size-9.5">
+        <Mortarboard className="size-5.5 sm:size-6.5" />
+      </span>
+      <span className="flex flex-col leading-[1.05]">
+        <span className="sm:hidden">Graduation</span>
+        <span className="hidden sm:inline">See my graduation</span>
+        <span className="hidden font-body text-[12px] font-black text-ink-3 sm:inline">
+          {graduation.when} · leave a note
+        </span>
+      </span>
+      <span className="grid size-8 flex-none place-items-center rounded-full border-[2.5px] border-ink bg-sun sm:size-9.5">
+        <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5 sm:size-4.5" strokeWidth={3.4} aria-hidden="true" />
       </span>
     </Link>
   );
