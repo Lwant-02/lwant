@@ -13,6 +13,10 @@ certifications), Experience, Connect** — joined by a path of arrows. It opens 
 tour**, where the camera glides through the sections on its own in about a minute, or **Explore the board**, to wander
 it by drag, scroll, pinch and keys.
 
+**A second board, `/graduation`** (PBI-011), for the owner's graduation from Rangsit University on 5–6 December 2026:
+a countdown, the days, and the Wishes wall, reached from a ticket on the portfolio's cover and back by *Back to my
+portfolio*.
+
 **Who it's for, what it should make them do, and what its voice is** — the owner's, not yet written (open question 1).
 
 ## Decisions
@@ -79,11 +83,29 @@ with Ctrl or ⌘, a pinch, `+`, `−` and `0`.
 its first four cards, Certifications its first four and Experience its first three (PBI-008); the rest fold under *See N more*, which unfolds them, the cards
 popping in one after another. Folded, they're in the HTML but out of reach. A press on the board pauses the tour.
 
+### Graduation: its own page, a countdown, a tour, and the Wishes wall 🟢 (owner, 2026-11-07, PBI-011)
+
+*"I want to add the graduation tour for me and countdown"* … *"I also want like user can comment and will appear on
+the board"* … *"add the cta to back to my portfolio page as well and put cta back to graduation page"* … *"good now
+time to implement"*. Chosen on the design canvas
+[claude.ai/artifact/5ctc51SLuFjRyBFXMAGLJf](https://claude.ai/artifact/5ctc51SLuFjRyBFXMAGLJf) (private to the owner).
+
+- **`/graduation`, the second route**, a board of its own — Graduation, The days, Wishes — with the portfolio's camera
+  and tour. It amends *One page, one board*: the portfolio stays one board; the graduation has its own.
+- **The Wishes wall takes input**, the first since PBI-002: a name and a note, **up straight away**; the owner hides
+  one afterwards in Neon. Kept: the name, the note, the time. Not kept: anything else.
+- **Neon** holds the notes, through `DATABASE_URL`.
+- **After 7 December the page stays**, as a keepsake: *I graduated!*, and the notes.
+- **The days are RSU's** ([commencement.rsu.ac.th](https://commencement.rsu.ac.th/), read 2026-11-07); the countdown
+  aims at the ceremony's day until RSU sets the ICT faculty's round.
+
 ## Rules that bind every PBI
 
 - **Every claim about the owner is the owner's.**
-- **Secrets stay on the server.** Since PBI-002 there are none: the one variable is `BASE_URL`.
-- **What a visitor types goes where they sent it, and nowhere else.** Since PBI-002 nothing on the site takes input.
+- **Secrets stay on the server.** Since PBI-011 there is one, `DATABASE_URL`, read on the server alone; `BASE_URL` is
+  the other variable.
+- **What a visitor types goes where they sent it, and nowhere else.** Since PBI-011 one form takes input, the Wishes
+  wall: a name and a note, shown on the board, kept in Neon, nothing else.
 - **The copy tells the truth.**
 
 ## Still to build
@@ -96,6 +118,7 @@ What the rebuild holds that no PBI has started — **no numbers**: each takes th
 | Risk | Mitigation |
 | --- | --- |
 | A claim about the owner goes stale or wrong | content in `data/` alone; the owner checks every claim (**Owner: human**) |
+| A note on the Wishes wall is spam or unkind | links refused, a bot trap, a too-fast check, 3 a visitor and 30 in all every ten minutes, on the server; the owner hides one in Neon (`update notes set hidden = true where id = …`) |
 | A board is harder to read than a page — for a screen reader, a keyboard, a small phone | the sections in the DOM in tour order, every word in the HTML; keys for every gesture; focus brings a link into view; one column on a phone, read at ~93% |
 | On a phone the tour drifts through a long section fast — Projects at about 400 px a second (PBI-004's verification) | eased by PBI-007: the tour drifts through four projects, not seven, in the same 14 s; a longer hold is still the owner's call |
 

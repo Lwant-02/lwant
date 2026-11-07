@@ -2,19 +2,33 @@
 
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Controls } from "@/components/board/controls";
-import { Cover } from "@/components/board/cover";
+import { WaysContext } from "@/components/board/ways";
 import { centreOn, fit, glideEase, middle, mix, pan, toWorld, zoomAt, type Box, type Camera, type Frame } from "@/lib/camera";
-import { LAST, SECTIONS, shots } from "@/lib/tour";
+import { shots, type Stop } from "@/lib/tour";
 
 export type Mode = "cover" | "explore" | "watch";
 
 /** Sent up from something on the board that has moved, for the board to bring it back into view (PBI-007). */
 export const REVEAL = "board:reveal";
 
+/** Sent on the window when the tour reaches its last stop's end (PBI-011: /graduation's confetti). */
+export const DONE = "board:done";
+
 type Props = {
-  /** the world: the six sections and the path, rendered on the server */
+  /** the world: the sections and the path, rendered on the server */
   children: React.ReactNode;
-  cover: { name: string; role: string; location: string; line: string; photo: string };
+  /** the tour's stops, in order: each a `[data-section]` in the world */
+  stops: readonly Stop[];
+  /** the page's heading once the cover's gone */
+  name: string;
+  /** what the page opens on; its keys reach the board through `useBoard` */
+  cover: React.ReactNode;
+  /** what floats in the top right corner over the board, if anything */
+  corner?: React.ReactNode;
+  /** how the world lays its sections out */
+  world: string;
+  /** what floats over everything, outside the world's transform: /graduation's confetti */
+  overlay?: React.ReactNode;
 };
 
 const GLIDE = 900;
@@ -35,7 +49,8 @@ const leastFor = (width: number) => (narrow(width) ? 0.8 : 0.75);
  * (journey/web/components/road/road-canvas.tsx). A cover first; then *Explore* — drag, scroll, pinch and the keys move
  * and zoom it — or *Watch* — the camera glides through the sections in the owner's order, and a hand takes it over.
  */
-export function Board({ children, cover }: Props) {
+export function Board({ children, stops, name, cover, corner, world: layout, overlay }: Props) {
+  const LAST = stops.length - 1;
   const root = useRef<HTMLDivElement>(null);
   const world = useRef<HTMLDivElement>(null);
   const size = useRef({ width: 1440, height: 900 });
@@ -58,7 +73,7 @@ export function Board({ children, cover }: Props) {
   // a section's title sits on its top edge, half above it, and its white edge around it: both are framed with it
   const TITLE = 64;
   const boxOf = (i: number): Box => {
-    const el = world.current!.querySelector<HTMLElement>(`[data-section="${SECTIONS[i].id}"]`)!;
+    const el = world.current!.querySelector<HTMLElement>(`[data-section="${stops[i].id}"]`)!;
     return { x: el.offsetLeft - 6, y: el.offsetTop - TITLE, width: el.offsetWidth + 12, height: el.offsetHeight + TITLE + 6 };
   };
   const frame = (m = state.current.mode) => frameOf(size.current, m);
@@ -112,13 +127,16 @@ export function Board({ children, cover }: Props) {
     const from = cam.current;
     hold.current.at = performance.now();
     animate(hold.current.left, (t) => mix(from, end, t), "drift", () => {
-      if (i === LAST) return setPlaying(false);
+      if (i === LAST) {
+        window.dispatchEvent(new Event(DONE));
+        return setPlaying(false);
+      }
       goStep(i + 1, true);
     });
   };
   const goStep = (i: number, play: boolean) => {
     setStep(i);
-    hold.current = { left: SECTIONS[i].hold, at: 0, moved: false };
+    hold.current = { left: stops[i].hold, at: 0, moved: false };
     glideTo(shotOf(i).start, play ? () => holdOn(i) : undefined);
   };
   const play = () => {
@@ -126,7 +144,7 @@ export function Board({ children, cover }: Props) {
     const { step: i } = state.current;
     if (i === LAST && hold.current.left <= 0) return goStep(0, true);
     if (hold.current.moved || hold.current.at === 0) {
-      hold.current = { left: SECTIONS[i].hold, at: 0, moved: false };
+      hold.current = { left: stops[i].hold, at: 0, moved: false };
       return glideTo(shotOf(i).start, () => holdOn(i));
     }
     holdOn(i);
@@ -156,6 +174,15 @@ export function Board({ children, cover }: Props) {
     setPlaying(false);
     state.current.mode = "explore";
     glideTo(overview("explore"));
+  };
+  /** Explore, starting on one section, and hand the keyboard to what it marks `data-autofocus`. */
+  const visit = (id: string) => {
+    halt();
+    setMode("explore");
+    setPlaying(false);
+    state.current.mode = "explore";
+    const i = Math.max(0, stops.findIndex((s) => s.id === id));
+    glideTo(shotOf(i).start, () => world.current!.querySelector<HTMLElement>(`[data-section="${id}"] [data-autofocus]`)?.focus({ preventScroll: true }));
   };
   const zoomBy = (factor: number) => {
     halt();
@@ -223,8 +250,12 @@ export function Board({ children, cover }: Props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  /** A field being typed in or selected keeps its keys and its pointer: the Wishes form (PBI-011). */
+  const typing = (target: EventTarget) => target instanceof Element && !!target.closest("input, textarea, select, [contenteditable]");
+
   const onPointerDown = (e: React.PointerEvent) => {
     if (e.pointerType === "mouse" && e.button !== 0) return;
+    if (typing(e.target)) return;
     pointers.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
     if (pointers.current.size === 1) gesture.current = { start: { x: e.clientX, y: e.clientY }, moved: false, pinch: null };
   };
@@ -283,7 +314,7 @@ export function Board({ children, cover }: Props) {
       "0": fitAll,
     };
     const act = keys[e.key];
-    if (!act || e.altKey || e.ctrlKey || e.metaKey) return;
+    if (!act || e.altKey || e.ctrlKey || e.metaKey || typing(e.target)) return;
     e.preventDefault();
     if (e.key.startsWith("Arrow")) hand();
     act();
@@ -310,7 +341,7 @@ export function Board({ children, cover }: Props) {
   return (
     <div className="fixed inset-0 overflow-hidden">
       {/* the cover's name is the page's heading; with the cover gone, the board keeps one */}
-      {open && <h1 className="sr-only">{cover.name}</h1>}
+      {open && <h1 className="sr-only">{name}</h1>}
       <div
         ref={root}
         role="region"
@@ -334,7 +365,7 @@ export function Board({ children, cover }: Props) {
       >
         <div
           ref={world}
-          className="absolute top-0 left-0 grid w-max origin-top-left grid-cols-[360px] items-start gap-y-50 p-30 lg:grid-cols-[720px_640px_1100px] lg:gap-x-60 lg:gap-y-55"
+          className={`absolute top-0 left-0 origin-top-left ${layout}`}
           style={{ transform: `translate(${camera.x}px, ${camera.y}px) scale(${camera.z})` }}
         >
           {children}
@@ -342,6 +373,8 @@ export function Board({ children, cover }: Props) {
       </div>
       {open ? (
         <Controls
+          stops={stops}
+          corner={corner}
           mode={mode}
           step={step}
           playing={playing}
@@ -352,8 +385,9 @@ export function Board({ children, cover }: Props) {
           onWatch={watch}
         />
       ) : (
-        <Cover {...cover} onWatch={watch} onExplore={explore} />
+        <WaysContext value={{ watch, explore, visit }}>{cover}</WaysContext>
       )}
+      {overlay}
     </div>
   );
 }

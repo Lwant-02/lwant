@@ -1,15 +1,19 @@
 import { ArrowUpRight } from "lucide-react";
 import { linkLabel } from "@/lib/links";
-import { SECTIONS, type SectionId } from "@/lib/tour";
+import { GRADUATION, SECTIONS, type SectionId } from "@/lib/tour";
 import { cn } from "@/lib/utils";
 
-const PANEL: Record<SectionId, string> = {
+const PANEL: Record<string, string> = {
   about: "bg-about",
   education: "bg-education",
   projects: "bg-projects",
   achievements: "bg-achievements",
   experience: "bg-experience",
   connect: "bg-connect",
+  // /graduation's: a gown's dark, the night's own paper (PBI-011)
+  graduation: "bg-gown text-chalk",
+  days: "bg-gown text-chalk",
+  wishes: "bg-gown text-chalk",
 };
 
 export const TINT: Record<SectionId, string> = {
@@ -21,9 +25,11 @@ export const TINT: Record<SectionId, string> = {
   connect: "bg-connect-tint",
 };
 
-/** One of the board's six sections: a colour panel cut out of the night, its title in the logo's lettering on its top edge. */
-export function Frame({ id, className, children }: { id: SectionId; className?: string; children: React.ReactNode }) {
-  const title = SECTIONS.find((s) => s.id === id)!.title;
+type Id = SectionId | (typeof GRADUATION)[number]["id"];
+
+/** One of a board's sections: a colour panel cut out of the night, its title in the logo's lettering on its top edge. */
+export function Frame({ id, className, children }: { id: Id; className?: string; children: React.ReactNode }) {
+  const title = [...SECTIONS, ...GRADUATION].find((s) => s.id === id)!.title;
   return (
     <section
       data-section={id}

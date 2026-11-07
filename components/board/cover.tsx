@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useBoard } from "@/components/board/ways";
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -9,15 +10,16 @@ type Props = {
   location: string;
   line: string;
   photo: string;
-  onWatch: () => void;
-  onExplore: () => void;
+  /** what sits over the wordmark, if anything: /graduation's ticket (PBI-011) */
+  ticket?: React.ReactNode;
 };
 
 /**
  * What the page opens on (PBI-004, the canvas's cover B): the wordmark as the hero, then who this is — a photo
  * sticker, the name, the role — and the two ways in: watch the tour, or explore the board.
  */
-export function Cover({ name, role, location, line, photo, onWatch, onExplore }: Props) {
+export function Cover({ name, role, location, line, photo, ticket }: Props) {
+  const { watch, explore } = useBoard();
   return (
     <div className="absolute inset-0 overflow-y-auto bg-night/90">
       <Sparkle className="top-[19%] left-[17%] size-5 opacity-55" />
@@ -25,6 +27,7 @@ export function Cover({ name, role, location, line, photo, onWatch, onExplore }:
       <Sparkle className="top-[71%] left-[21%] size-4 text-sun opacity-55" />
       <div className="grid min-h-full place-items-center px-5 py-12">
         <div className="flex animate-[rise_600ms_cubic-bezier(0.16,1,0.3,1)_both] flex-col items-center text-center motion-reduce:animate-none">
+          {ticket}
           <Image
             src="/lwant-logo-dark.svg"
             alt="Lwant"
@@ -51,11 +54,13 @@ export function Cover({ name, role, location, line, photo, onWatch, onExplore }:
           </div>
           <p className="mt-6 max-w-[46ch] text-[17px] leading-relaxed font-semibold text-chalk-2">{line}</p>
           <div className="mt-8 flex flex-wrap justify-center gap-6">
-            <KeyButton onClick={onWatch} primary>
+            <KeyButton onClick={watch} primary className="w-[262px] justify-center">
               <PlayMark />
               Watch the tour
             </KeyButton>
-            <KeyButton onClick={onExplore}>Explore the board</KeyButton>
+            <KeyButton onClick={explore} className="w-[262px] justify-center">
+              Explore the board
+            </KeyButton>
           </div>
           <p className="mt-6 text-[14.5px] font-bold text-chalk-3">The tour takes about a minute. Or drag, scroll and zoom around on your own.</p>
         </div>
@@ -100,7 +105,7 @@ export function PlayMark() {
 }
 
 /** The logo's four-pointed sparkle, scattered on the night. */
-function Sparkle({ className }: { className?: string }) {
+export function Sparkle({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" className={cn("pointer-events-none absolute text-white", className)}>
       <path d="M12 0C12 7 17 12 24 12 17 12 12 17 12 24 12 17 7 12 0 12 7 12 12 7 12 0Z" fill="currentColor" />

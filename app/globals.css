@@ -26,6 +26,58 @@
   --color-achievements-tint: #ffe0e0;
   --color-experience-tint: #e8e0ff;
   --color-connect-tint: #ffe6cc;
+  /* /graduation's panels (PBI-011): a gown's dark */
+  --color-gown: #2a2a30;
+
+  /* /graduation's motion (PBI-011), each used under motion-safe: */
+  --animate-twinkle: twinkle 2.6s ease-in-out infinite;
+  --animate-bob: bob 3.4s ease-in-out infinite;
+  --animate-spin-slow: turn 18s linear infinite;
+  --animate-tick: tick 1s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+  --animate-sway: sway 2.4s ease-in-out infinite;
+  --animate-fall: fall linear infinite;
+  --animate-wiggle: wiggle 5s ease-in-out infinite;
+  --animate-fill: fill 1.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-pop: pop 560ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  --animate-burst: burst 2.6s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+
+  @keyframes twinkle {
+    0%, 100% { transform: scale(0.8) rotate(0); opacity: 0.45; }
+    50% { transform: scale(1.3) rotate(25deg); opacity: 1; }
+  }
+  @keyframes bob {
+    0%, 100% { translate: 0 0; }
+    50% { translate: 0 -10px; }
+  }
+  @keyframes turn {
+    to { rotate: 360deg; }
+  }
+  @keyframes tick {
+    0% { transform: translateY(-5px) scale(1.05); }
+    30%, 100% { transform: none; }
+  }
+  @keyframes sway {
+    0%, 100% { rotate: -6deg; }
+    50% { rotate: 6deg; }
+  }
+  @keyframes fall {
+    from { transform: translateY(-40px) rotate(0); }
+    to { transform: translateY(110vh) rotate(620deg); }
+  }
+  @keyframes wiggle {
+    0%, 82%, 100% { rotate: 0deg; }
+    86% { rotate: 3deg; scale: 1.03; }
+    90% { rotate: -1.5deg; scale: 1.03; }
+    94% { rotate: 2deg; }
+  }
+  @keyframes fill {
+    from { width: 0; }
+  }
+  @keyframes burst {
+    from { transform: translate(0, 0) rotate(0); opacity: 1; }
+    80% { opacity: 1; }
+    to { transform: translate(var(--dx), var(--dy)) rotate(var(--turn)); opacity: 0; }
+  }
 }
 
 /* next/font sets the faces on <body>, so the utilities name them directly */
@@ -85,6 +137,41 @@
   [data-section="achievements"] { grid-area: 2 / 3; }
   [data-section="experience"] { grid-area: 2 / 2; }
   [data-section="connect"] { grid-area: 2 / 1; justify-self: end; width: 520px; }
+}
+
+/* /graduation's board (PBI-011): Graduation and The days side by side, Wishes under both, older notes under it. */
+@media (width >= 64rem) {
+  [data-section="graduation"] { grid-area: 1 / 1; }
+  [data-section="days"] { grid-area: 1 / 2; }
+  [data-section="wishes"] { grid-area: 2 / 1 / 3 / 3; justify-self: center; width: 1240px; }
+  [data-spill] { grid-area: 3 / 1 / 4 / 3; justify-self: center; width: 1240px; }
+}
+
+/* A photo taped down: a white border, an ink line, the night's shadow. */
+@utility polaroid {
+  background: #fff;
+  border: 3px solid var(--color-ink);
+  border-radius: 10px;
+  padding: 9px 9px 0;
+  box-shadow: 0 0 0 4px #fff, 6px 7px 0 4px rgb(0 0 0 / 0.35);
+}
+
+/* Its strip of tape. */
+@utility tape {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  width: 76px;
+  height: 24px;
+  margin-left: -38px;
+  background: rgb(255 216 77 / 0.85);
+  border: 2px solid rgb(30 30 30 / 0.5);
+  rotate: -4deg;
+}
+
+/* A sticker cut from a shape: the white edge follows its outline. */
+@utility white-edge {
+  filter: drop-shadow(3px 0 0 #fff) drop-shadow(-3px 0 0 #fff) drop-shadow(0 3px 0 #fff) drop-shadow(0 -3px 0 #fff);
 }
 
 @keyframes rise {

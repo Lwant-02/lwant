@@ -13,13 +13,23 @@ export const SECTIONS = [
 
 export type SectionId = (typeof SECTIONS)[number]["id"];
 
+// /graduation's board (PBI-011): the countdown and the degree, the two days, then the notes.
+export const GRADUATION = [
+  { id: "graduation", title: "Graduation", hold: 10000 },
+  { id: "days", title: "The days", hold: 8000 },
+  { id: "wishes", title: "Wishes", hold: 10000 },
+] as const;
+
+/** A stop on a board's tour: the section it frames, its title, and how long the tour holds on it. */
+export type Stop = { readonly id: string; readonly title: string; readonly hold: number };
+
 export const LAST = SECTIONS.length - 1;
 
-export const stepAfter = (step: number) => Math.min(LAST, step + 1);
+export const stepAfter = (step: number, last = LAST) => Math.min(last, step + 1);
 export const stepBefore = (step: number) => Math.max(0, step - 1);
 
 /** "3 of 6" */
-export const stepName = (step: number) => `${step + 1} of ${SECTIONS.length}`;
+export const stepName = (step: number, total: number = SECTIONS.length) => `${step + 1} of ${total}`;
 
 /**
  * Where the tour's camera holds on a section. A section that fits at `least` or closer is shown whole and still. One

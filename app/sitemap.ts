@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { siteUrl } from "@/lib/site";
 
-// One page since PBI-002: the board.
+// The board (PBI-002), and the graduation's (PBI-011).
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteUrl();
 
@@ -11,6 +11,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 1,
+    },
+    {
+      url: `${baseUrl}/graduation`,
+      lastModified: new Date(),
+      changeFrequency: "daily",
+      priority: 0.8,
     },
   ];
 }

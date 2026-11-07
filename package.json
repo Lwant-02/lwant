@@ -8,18 +8,21 @@
     "start": "next start",
     "lint": "eslint",
     "test": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test \"tests/*.test.ts\"",
+    "notes:setup": "node --env-file=.env.local scripts/notes-setup.mjs",
     "pbi:next": "node scripts/pbi.mjs next --fetch",
     "pbi:current": "node scripts/pbi.mjs current",
     "pbi:list": "node scripts/pbi.mjs list",
     "pbi:check": "node scripts/pbi.mjs check --fetch"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^1.2.0",
     "@vercel/analytics": "^2.0.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.562.0",
     "next": "^16.1.6",
     "react": "19.2.3",
     "react-dom": "19.2.3",
+    "server-only": "^0.0.1",
     "tailwind-merge": "^3.4.0"
   },
   "devDependencies": {
