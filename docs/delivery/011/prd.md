@@ -117,3 +117,9 @@ Built and checked here, then deployed to production on the owner's word.
   and 390, after *Watch the tour* and after *Explore the board*.
 - **RSU's logo out** (owner, 2026-11-07: *"no need to put this logo"*): gone from the cover, and its file from
   `public/images/graduation/`.
+- **Day 2's hours, and a faster way in** (owner, 2026-11-07: *"should add the time at day 6 as well"*, *"just add the
+  time start and end"*; *"why the link to graduation is kinda stale"*): Day 2 reads *07:00–19:30*, RSU's first round's
+  start to its last's end. The link was `next/link` already; the wait was the route running in Washington (`iad1`)
+  while its visitors and Neon are in Singapore — `x-vercel-id: sin1::iad1`, about 0.7 s to the first byte. It now runs
+  in `sin1` (`preferredRegion`), and `app/graduation/loading.tsx` answers a click at once and lets Next prefetch it.
+

@@ -43,7 +43,7 @@ export const graduation = {
       day: "6",
       weekday: "Sun",
       title: "Commencement ceremony",
-      detail: "Building 14 · the round by faculty, set by RSU",
+      detail: "07:00–19:30 · Building 14, in three rounds by faculty",
     },
   ],
   photos: {

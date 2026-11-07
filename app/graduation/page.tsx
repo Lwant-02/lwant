@@ -13,6 +13,10 @@ import { graduation } from "@/data/graduation";
 import { siteUrl } from "@/lib/site";
 import { GRADUATION } from "@/lib/tour";
 
+// rendered in Singapore, beside the Neon database (ap-southeast-1) and near the owner's visitors; from Vercel's default,
+// Washington, each visit crossed the Pacific twice
+export const preferredRegion = "sin1";
+
 const URL = `${siteUrl()}/graduation`;
 const DESCRIPTION = `${about.name} (${about.nickname}) graduates from ${graduation.university} on ${graduation.whenFull}. Count down to the ceremony with me, and leave a note on the board.`;
 const SHARE = `${siteUrl()}/lwant-share.png`;
